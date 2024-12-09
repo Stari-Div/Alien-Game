@@ -12,10 +12,11 @@ thirst = 0
 tiredness = 0
 water_bottle = 3 # Create water bottles
 aliens_distance = -20 # 20 miles behind
+paused = False
 # print(miles_traveled,thirst,tiredness,water_bottle)
 
 done = False #Loop
-while not done:
+while not done and not paused:
     #print options
     print("")
     print("A. Drink from your water bottle.")
@@ -74,7 +75,8 @@ while not done:
             print("The aliens have been knocked back 50-60 miles")
     # Shop
     elif user_choice == "F":
-        print("Welcome to the shop, here you can purchase water bottles")
+        paused = True
+        print("Welcome to the shop, here you can purchase water bottles and more!")
         print("A. Water Bottle. Cost: 20 Miles")
         print("B. Pay off bounty. Cost: 150 Miles")
         print("C. Tiredness Tablets. Instantly decrease your tiredness by 2! Cost: 40")
@@ -83,19 +85,25 @@ while not done:
     if Purchase == "A":
         water_bottle += 1
         miles_traveled -= 20
+        paused = False
     if Purchase == "B":
         miles_traveled -= 150
         print("You payed off your alien bounty. You now live among the aliens as one of them.")
         done = True
+        paused = False
     if Purchase == "C":
         miles_traveled -= 40
         tiredness -= 2
+        paused = False
         print("Your tiredness tablet has been consumed")
     if Purchase == "D":
         miles_traveled -=50
         LaserCannons += 1
+        paused = False
     if Purchase == "E":
+        paused = False
         print("")
+        
         
 
     # Thirst conditions
@@ -121,3 +129,4 @@ while not done:
         print("You WON")
         print("The aliens were", miles_traveled - aliens_distance, "miles behind you")
         done = True
+
