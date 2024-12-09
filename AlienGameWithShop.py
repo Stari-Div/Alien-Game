@@ -1,3 +1,5 @@
+# THIS IS A BETA VERSION OF THIS GAME #
+
 import random
 
 #welcome to the alien game
